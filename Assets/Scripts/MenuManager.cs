@@ -3,8 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    public void PlayLevel01() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    public void PlayLevel(int levelIndex) {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + levelIndex);
     }
     public void QuitGame() {
         // save any game data here
