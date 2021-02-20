@@ -652,8 +652,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 1459306892}
   player2: {fileID: 1434693264}
-  lightThreshold: 1
-  intensity: 1
+  minIntensityDistance: 2
+  maxIntensityDistance: 1
+  maxIntensity: 1
 --- !u!1 &952894290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,7 +1319,7 @@ Transform:
   m_GameObject: {fileID: 1779113238}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6

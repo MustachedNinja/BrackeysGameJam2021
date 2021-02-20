@@ -4,15 +4,17 @@ public class LightController : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject player1;
+    private GameObject player1 = null;
     [SerializeField]
-    private GameObject player2;
+    private GameObject player2 = null;
     private Light[] lights;
 
     [SerializeField]
-    private float lightThreshold = 5f;
+    private float minIntensityDistance = 15f;
     [SerializeField]
-    private float intensity = 1f;
+    private float maxIntensityDistance = 5f;
+    [SerializeField]
+    private float maxIntensity = 1f;
     void Start()
     {
         lights = transform.GetComponentsInChildren<Light>(true);
@@ -24,11 +26,18 @@ public class LightController : MonoBehaviour
         }
     }
 
-    void Update() {
-        if (Vector3.Distance(player1.transform.position, player2.transform.position) < lightThreshold) {
-            SetIntensity(intensity);
+    float CalculateIntensity(Vector3 player1Pos, Vector3 player2Pos) {
+        float distance = Vector3.Distance(player1Pos, player2Pos);
+        if (distance > minIntensityDistance) {
+            return 0;
+        } else if (distance < maxIntensityDistance) {
+            return maxIntensity;
         } else {
-            SetIntensity(0);
+            return Mathf.InverseLerp(minIntensityDistance, maxIntensityDistance, distance) * maxIntensity;
         }
+    }
+
+    void Update() {
+        SetIntensity(CalculateIntensity(player1.transform.position, player2.transform.position));
     }
 }

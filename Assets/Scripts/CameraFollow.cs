@@ -5,9 +5,9 @@ public class CameraFollow : MonoBehaviour
     [SerializeField]
     Vector3 offset = new Vector3(0f, 0.125f, -4f);
     [SerializeField]
-    private GameObject player1;
+    private GameObject player1 = null;
     [SerializeField]
-    private GameObject player2;
+    private GameObject player2 = null;
     [SerializeField]
     private float smoothSpeed = 10f;
     void LateUpdate()

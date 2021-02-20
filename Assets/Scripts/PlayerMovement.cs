@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     private float movementSpeed = 3;
     [SerializeField]
     private float jumpHeight = 10f;
-    private bool canJump = false;
     private float distToGround = 0f;
     private bool attemptJump = false;
     void Awake() {
