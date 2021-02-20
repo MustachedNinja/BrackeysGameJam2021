@@ -12,7 +12,7 @@ public class LightController : MonoBehaviour
     [SerializeField]
     private float lightThreshold = 5f;
     [SerializeField]
-    private float intensity = 10f;
+    private float intensity = 1f;
     void Start()
     {
         lights = transform.GetComponentsInChildren<Light>(true);

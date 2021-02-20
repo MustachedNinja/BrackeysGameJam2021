@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     float direction;
     [SerializeField]
     private float movementSpeed = 3;
+    [SerializeField]
+    private float jumpHeight = 10f;
     private bool canJump = false;
     private float distToGround = 0f;
     private bool attemptJump = false;
@@ -24,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Jump() {
-        rb.AddForce(0, 200, 0);
+        rb.AddForce(0, 50 * jumpHeight, 0);
     }
 
     public void OnMoveInput(float direction) {
