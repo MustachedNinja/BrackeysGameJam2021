@@ -10,10 +10,15 @@ public class CameraFollow : MonoBehaviour
     private GameObject player2 = null;
     [SerializeField]
     private float smoothSpeed = 10f;
+
+    [SerializeField]
+    private bool zoom = true;
     void LateUpdate()
     {
-        float distance = Vector3.Distance(player1.transform.position, player2.transform.position);
-        float maxOffCenter = Mathf.Max(Mathf.Abs(player1.transform.position.y), Mathf.Abs(player2.transform.position.y));
+        float maxOffCenter = 0;
+        if (zoom) {
+            maxOffCenter = Mathf.Max(Mathf.Abs(player1.transform.position.y), Mathf.Abs(player2.transform.position.y));
+        }
         Vector3 center = new Vector3((player1.transform.position.x + player2.transform.position.x) / 2, 0, -maxOffCenter * 1.5f);
         Vector3 targetPosition = center + offset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, targetPosition, smoothSpeed * Time.deltaTime);
