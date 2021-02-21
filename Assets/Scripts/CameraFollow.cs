@@ -12,7 +12,9 @@ public class CameraFollow : MonoBehaviour
     private float smoothSpeed = 10f;
     void LateUpdate()
     {
-        Vector3 center = new Vector3((player1.gameObject.transform.position.x + player2.gameObject.transform.position.x) / 2, 0, 0);
+        float distance = Vector3.Distance(player1.transform.position, player2.transform.position);
+        float maxOffCenter = Mathf.Max(Mathf.Abs(player1.transform.position.y), Mathf.Abs(player2.transform.position.y));
+        Vector3 center = new Vector3((player1.transform.position.x + player2.transform.position.x) / 2, 0, -maxOffCenter * 1.5f);
         Vector3 targetPosition = center + offset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, targetPosition, smoothSpeed * Time.deltaTime);
         transform.position = smoothedPosition;

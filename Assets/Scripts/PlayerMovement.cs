@@ -5,6 +5,9 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;
 
+    [SerializeField]
+    private LevelManager manager = null;
+
     float direction;
     [SerializeField]
     private float movementSpeed = 3;
@@ -37,6 +40,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Update() {
+        if (transform.position.y < -10f) {
+            manager.ReloadLevel();
+        }
         transform.position = new Vector3(transform.position.x + (direction * movementSpeed * Time.deltaTime), transform.position.y, 0);
         if (IsGrounded() && attemptJump) {
             Jump();
